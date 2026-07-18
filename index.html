@@ -7,7 +7,7 @@
   <meta name="description" content="Proposta de parceria estratégica entre Avantis e LB Marketing Jurídico para o mercado de IA jurídica.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --dark: #0a0e0a;
@@ -464,6 +464,250 @@
       line-height: 1.6;
     }
 
+    /* ======= TYPING DEMO ======= */
+    #demo {
+      position: relative;
+    }
+
+    .demo-terminal {
+      background: #0d1117;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .demo-terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .demo-terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .demo-terminal-dot--red { background: #ff5f57; }
+    .demo-terminal-dot--yellow { background: #febc2e; }
+    .demo-terminal-dot--green { background: #28c840; }
+
+    .demo-terminal-title {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-left: 0.5rem;
+    }
+
+    .demo-terminal-body {
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      min-height: 220px;
+    }
+
+    .demo-prompt {
+      color: var(--green);
+    }
+
+    .demo-prompt::before {
+      content: '> ';
+      color: var(--green);
+      opacity: 0.5;
+    }
+
+    .demo-response {
+      color: var(--text-dim);
+      margin-top: 0.75rem;
+      padding-left: 1rem;
+      border-left: 2px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .demo-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--green);
+      animation: blink-cursor 1s step-end infinite;
+      vertical-align: text-bottom;
+      margin-left: 2px;
+    }
+
+    @keyframes blink-cursor {
+      50% { opacity: 0; }
+    }
+
+    .demo-controls {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .demo-btn {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-card-border);
+      color: var(--text-dim);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .demo-btn:hover, .demo-btn.active {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* ======= FLIP CARDS ======= */
+    .mind-clone-card {
+      perspective: 800px;
+      cursor: pointer;
+    }
+
+    .mind-clone-card-inner {
+      position: relative;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .mind-clone-card:hover .mind-clone-card-inner,
+    .mind-clone-card.flipped .mind-clone-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .mind-clone-front, .mind-clone-back {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .mind-clone-back {
+      position: absolute;
+      inset: 0;
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    /* ======= REVENUE SLIDER ======= */
+    .slider-section {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .slider-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-card-border);
+      border-radius: 20px;
+    }
+
+    .slider-label {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+    }
+
+    .slider-value-display {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--green-bright);
+      margin-bottom: 1.5rem;
+    }
+
+    .slider-value-display small {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+
+    .slider-input {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(to right, var(--green) 0%, var(--green) var(--progress, 10%), rgba(255,255,255,0.1) var(--progress, 10%));
+      outline: none;
+      cursor: pointer;
+    }
+
+    .slider-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 15px var(--green-glow);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .slider-input::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .slider-input::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 15px var(--green-glow);
+      border: none;
+      cursor: pointer;
+    }
+
+    .slider-range-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+
+    .slider-breakdown {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .slider-breakdown-item {
+      text-align: center;
+    }
+
+    .slider-breakdown-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.25rem;
+    }
+
+    .slider-breakdown-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
     /* ======= NUMBERS ======= */
     #numbers {
       position: relative;
@@ -865,42 +1109,74 @@
         <h3 style="font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;">Mind-clones: especialistas virtuais</h3>
         <div class="mind-clones-grid">
           <div class="mind-clone-card anim-target">
-            <div class="mind-clone-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div class="mind-clone-card-inner">
+              <div class="mind-clone-front">
+                <div class="mind-clone-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <p class="mind-clone-name">Direito Comercial</p>
+              </div>
+              <div class="mind-clone-back">Contratos, sociedades, recuperação judicial, arbitragem e M&A</div>
             </div>
-            <p class="mind-clone-name">Direito Comercial</p>
           </div>
           <div class="mind-clone-card anim-target">
-            <div class="mind-clone-icon">
-              <svg viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+            <div class="mind-clone-card-inner">
+              <div class="mind-clone-front">
+                <div class="mind-clone-icon">
+                  <svg viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+                </div>
+                <p class="mind-clone-name">Constitucional</p>
+              </div>
+              <div class="mind-clone-back">Mandados de segurança, ADIs, controle de constitucionalidade e direitos fundamentais</div>
             </div>
-            <p class="mind-clone-name">Constitucional</p>
           </div>
           <div class="mind-clone-card anim-target">
-            <div class="mind-clone-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="mind-clone-card-inner">
+              <div class="mind-clone-front">
+                <div class="mind-clone-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <p class="mind-clone-name">LGPD e privacidade</p>
+              </div>
+              <div class="mind-clone-back">Compliance, relatórios de impacto, políticas de dados e resposta a incidentes</div>
             </div>
-            <p class="mind-clone-name">LGPD e privacidade</p>
           </div>
           <div class="mind-clone-card anim-target">
-            <div class="mind-clone-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 6v4l3 3"/></svg>
+            <div class="mind-clone-card-inner">
+              <div class="mind-clone-front">
+                <div class="mind-clone-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 6v4l3 3"/></svg>
+                </div>
+                <p class="mind-clone-name">Direito penal</p>
+              </div>
+              <div class="mind-clone-back">Defesa criminal, habeas corpus, crimes econômicos e execução penal</div>
             </div>
-            <p class="mind-clone-name">Direito penal</p>
           </div>
           <div class="mind-clone-card anim-target">
-            <div class="mind-clone-icon">
-              <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            <div class="mind-clone-card-inner">
+              <div class="mind-clone-front">
+                <div class="mind-clone-icon">
+                  <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                </div>
+                <p class="mind-clone-name">Sucessões e família</p>
+              </div>
+              <div class="mind-clone-back">Inventários, testamentos, planejamento patrimonial e divórcios litigiosos</div>
             </div>
-            <p class="mind-clone-name">Sucessões e família</p>
           </div>
           <div class="mind-clone-card anim-target">
-            <div class="mind-clone-icon">
-              <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <div class="mind-clone-card-inner">
+              <div class="mind-clone-front">
+                <div class="mind-clone-icon">
+                  <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+                <p class="mind-clone-name">Direito civil</p>
+              </div>
+              <div class="mind-clone-back">Responsabilidade civil, obrigações, contratos e direitos reais</div>
             </div>
-            <p class="mind-clone-name">Direito civil</p>
           </div>
         </div>
+
+        <p style="font-size: 0.75rem; color: var(--text-dim); text-align: center; margin-bottom: 2.5rem; opacity: 0.6;">Passe o mouse sobre um card para ver o que cada especialista faz</p>
 
         <div class="capabilities-grid">
           <div class="capability-card anim-target">
@@ -931,6 +1207,36 @@
             <h4 class="capability-title">Gestão de prazos</h4>
             <p class="capability-desc">Monitoramento de intimações e deadlines. Contexto persistente que aprende os padrões de cada escritório.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== DEMO ====== -->
+    <section id="demo" class="section-padding">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <p class="section-label anim-target">Veja em ação</p>
+          <h2 class="section-title anim-target" style="max-width: 600px; margin-left: auto; margin-right: auto;">O que o advogado vê quando usa</h2>
+        </div>
+
+        <div class="demo-terminal">
+          <div class="demo-terminal-bar">
+            <div class="demo-terminal-dot demo-terminal-dot--red"></div>
+            <div class="demo-terminal-dot demo-terminal-dot--yellow"></div>
+            <div class="demo-terminal-dot demo-terminal-dot--green"></div>
+            <span class="demo-terminal-title">Claude Code Desktop — IA Jurídica Avantis</span>
+          </div>
+          <div class="demo-terminal-body" id="demoBody">
+            <div class="demo-prompt" id="demoPrompt"></div>
+            <div class="demo-response" id="demoResponse" style="display:none;"></div>
+          </div>
+        </div>
+
+        <div class="demo-controls">
+          <button class="demo-btn active" data-demo="0">Pesquisa</button>
+          <button class="demo-btn" data-demo="1">Tese</button>
+          <button class="demo-btn" data-demo="2">Prazos</button>
+          <button class="demo-btn" data-demo="3">Revisão</button>
         </div>
       </div>
     </section>
@@ -1017,6 +1323,31 @@
         </div>
 
         <p class="numbers-note">Sua comissão: 30% sobre cada setup + 20% da mensalidade recorrente de cada cliente ativo.</p>
+
+        <div class="slider-section">
+          <div class="slider-container">
+            <p class="slider-label">Simule: quantos clientes você traz?</p>
+            <div class="slider-value-display" id="sliderDisplay">5 clientes <small>ativos</small></div>
+            <input type="range" class="slider-input" id="clientSlider" min="1" max="100" value="5" step="1">
+            <div class="slider-range-labels">
+              <span>1</span>
+              <span>25</span>
+              <span>50</span>
+              <span>75</span>
+              <span>100</span>
+            </div>
+            <div class="slider-breakdown">
+              <div class="slider-breakdown-item">
+                <p class="slider-breakdown-label">Receita mensal</p>
+                <p class="slider-breakdown-value" id="sliderMonthly">R$297/mês</p>
+              </div>
+              <div class="slider-breakdown-item">
+                <p class="slider-breakdown-label">Setup acumulado</p>
+                <p class="slider-breakdown-value" id="sliderSetup">R$4.500</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1248,6 +1579,130 @@
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut'
+      });
+
+      // ======= TYPING DEMO =======
+      const demos = [
+        {
+          prompt: 'Pesquise jurisprudência do STJ sobre prescrição em contrato de locação dos últimos 2 anos',
+          response: 'Encontrei 47 acórdãos relevantes. Os 3 mais citados:\n\n• REsp 1.930.442/SP — prazo prescricional de 3 anos (art. 206, §3º, I do CC)\n• AgInt no AREsp 2.180.033/RJ — contagem a partir do vencimento de cada parcela\n• REsp 2.015.887/MG — interrupção por notificação extrajudicial\n\nConsolidação: tendência do STJ é aplicar prazo trienal. Posso montar a tese?'
+        },
+        {
+          prompt: 'Monte a tese para contestação: cliente locatário, cobrança após 4 anos do débito',
+          response: 'Tese estruturada:\n\n1. Preliminar: prescrição trienal (art. 206, §3º, I, CC)\n2. Mérito subsidiário: ausência de notificação válida\n3. Pedido: extinção com resolução de mérito\n\nFundamentação já vinculada aos 3 precedentes do STJ. Gerando peça completa...'
+        },
+        {
+          prompt: 'Quais prazos processuais tenho esta semana?',
+          response: '3 prazos identificados:\n\n• Proc. 0012345-XX — Contestação — vence quinta (17/07)\n• Proc. 0098765-XX — Réplica — vence sexta (18/07)\n• Proc. 0054321-XX — Recurso — vence segunda (21/07)\n\nPrioridade sugerida: contestação primeiro (prazo fatal, sem prorrogação).'
+        },
+        {
+          prompt: 'Revise esta petição e aponte inconsistências antes do protocolo',
+          response: 'Revisão concluída. 4 pontos:\n\n⚠ Parágrafo 12: cita art. 927 mas fundamenta em responsabilidade objetiva (deveria ser art. 931)\n⚠ Pedido "c": valor do dano moral sem parâmetro jurisprudencial\n✓ Formatação CNJ: OK\n✓ Prazos e endereçamento: corretos\n\nCorrigir antes do protocolo?'
+        }
+      ];
+
+      let currentDemo = 0;
+      let typingTimeout = null;
+
+      function typeText(element, text, speed, callback) {
+        let i = 0;
+        element.textContent = '';
+        const cursor = document.createElement('span');
+        cursor.className = 'demo-cursor';
+        element.appendChild(cursor);
+
+        function type() {
+          if (i < text.length) {
+            cursor.remove();
+            if (text[i] === '\n') {
+              element.appendChild(document.createElement('br'));
+            } else {
+              element.appendChild(document.createTextNode(text[i]));
+            }
+            element.appendChild(cursor);
+            i++;
+            typingTimeout = setTimeout(type, speed);
+          } else {
+            cursor.remove();
+            if (callback) callback();
+          }
+        }
+        type();
+      }
+
+      function runDemo(index) {
+        if (typingTimeout) clearTimeout(typingTimeout);
+        const demo = demos[index];
+        const promptEl = document.getElementById('demoPrompt');
+        const responseEl = document.getElementById('demoResponse');
+        promptEl.textContent = '';
+        responseEl.style.display = 'none';
+        responseEl.textContent = '';
+
+        typeText(promptEl, demo.prompt, 35, () => {
+          responseEl.style.display = 'block';
+          typeText(responseEl, demo.response, 15);
+        });
+      }
+
+      document.querySelectorAll('.demo-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.demo-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentDemo = parseInt(btn.dataset.demo);
+          runDemo(currentDemo);
+        });
+      });
+
+      // Auto-start first demo when section is in view
+      ScrollTrigger.create({
+        trigger: '#demo',
+        start: 'top 70%',
+        once: true,
+        onEnter: () => runDemo(0)
+      });
+
+      // ======= FLIP CARDS (mobile touch) =======
+      if ('ontouchstart' in window) {
+        document.querySelectorAll('.mind-clone-card').forEach(card => {
+          card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+          });
+        });
+      }
+
+      // ======= REVENUE SLIDER =======
+      const slider = document.getElementById('clientSlider');
+      const sliderDisplay = document.getElementById('sliderDisplay');
+      const sliderMonthly = document.getElementById('sliderMonthly');
+      const sliderSetup = document.getElementById('sliderSetup');
+
+      function updateSlider() {
+        const clients = parseInt(slider.value);
+        const progress = ((clients - 1) / 99) * 100;
+        slider.style.setProperty('--progress', progress + '%');
+
+        // Average ticket: mix of plans (60% essencial R$197, 30% completo R$397, 10% escritorio R$697)
+        const avgMonthly = 197 * 0.6 + 397 * 0.3 + 697 * 0.1;
+        const avgSetup = 2000 * 0.6 + 3000 * 0.3 + 5000 * 0.1;
+
+        const monthlyRevenue = Math.round(clients * avgMonthly * 0.2);
+        const setupRevenue = Math.round(clients * avgSetup * 0.3);
+
+        sliderDisplay.innerHTML = clients + ' cliente' + (clients > 1 ? 's' : '') + ' <small>ativos</small>';
+        sliderMonthly.textContent = 'R$' + monthlyRevenue.toLocaleString('pt-BR') + '/mês';
+        sliderSetup.textContent = 'R$' + setupRevenue.toLocaleString('pt-BR');
+      }
+
+      slider.addEventListener('input', updateSlider);
+      updateSlider();
+
+      // Demo section animations
+      scrubSection('#demo', 'top 90%', 'top 40%', tl => {
+        tl.from('#demo .section-label', { opacity: 0, y: 30 }, 0)
+          .from('#demo .section-title', { opacity: 0, y: 40 }, 0.05)
+          .from('.demo-terminal', { opacity: 0, y: 50, scale: 0.95 }, 0.15)
+          .from('.demo-controls', { opacity: 0, y: 20 }, 0.3);
       });
 
     })();
