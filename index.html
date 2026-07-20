@@ -391,6 +391,17 @@
       font-weight: 600;
       border: 1px solid var(--dark-card-border);
       background: var(--dark-card);
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      transition: box-shadow 0.3s ease;
+    }
+    .partnership-node:active {
+      cursor: grabbing;
+    }
+    .partnership-node.dragging {
+      z-index: 10;
     }
 
     .partnership-node--lb {
@@ -1580,6 +1591,88 @@
         yoyo: true,
         ease: 'sine.inOut'
       });
+
+      // ======= PARTNERSHIP DIAGRAM: float + drag =======
+      (function() {
+        const nodes = document.querySelectorAll('.partnership-node');
+        if (!nodes.length) return;
+
+        // Floating animation (each node gets a unique rhythm)
+        nodes.forEach((node, i) => {
+          const dur = 3 + i * 0.7;
+          const xRange = 6 + i * 3;
+          const yRange = 8 + i * 2;
+          gsap.to(node, {
+            x: `+=${xRange}`, y: `+=${yRange}`,
+            duration: dur, repeat: -1, yoyo: true,
+            ease: 'sine.inOut', delay: i * 0.5
+          });
+          gsap.to(node, {
+            x: `-=${xRange * 0.6}`, y: `+=${yRange * 0.4}`,
+            duration: dur * 1.3, repeat: -1, yoyo: true,
+            ease: 'sine.inOut', delay: i * 0.3 + 1
+          });
+        });
+
+        // Drag & snap-back
+        nodes.forEach(node => {
+          let isDragging = false;
+          let startX, startY, nodeX, nodeY;
+          const floatAnims = gsap.getTweensOf(node);
+
+          function getPointer(e) {
+            const t = e.touches ? e.touches[0] : e;
+            return { x: t.clientX, y: t.clientY };
+          }
+
+          function onStart(e) {
+            isDragging = true;
+            node.classList.add('dragging');
+            floatAnims.forEach(a => a.pause());
+            const p = getPointer(e);
+            const rect = node.getBoundingClientRect();
+            startX = p.x;
+            startY = p.y;
+            const transform = new DOMMatrix(getComputedStyle(node).transform);
+            nodeX = transform.m41;
+            nodeY = transform.m42;
+            node.style.boxShadow = '0 0 60px rgba(16, 185, 129, 0.3)';
+          }
+
+          function onMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const p = getPointer(e);
+            const dx = p.x - startX;
+            const dy = p.y - startY;
+            gsap.set(node, { x: nodeX + dx, y: nodeY + dy });
+          }
+
+          function onEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            node.classList.remove('dragging');
+            node.style.boxShadow = '';
+            // Snap back with elastic ease
+            gsap.to(node, {
+              x: 0, y: 0,
+              duration: 1.2,
+              ease: 'elastic.out(1, 0.4)',
+              onComplete: () => floatAnims.forEach(a => a.resume())
+            });
+          }
+
+          // Mouse events
+          node.addEventListener('mousedown', onStart);
+          window.addEventListener('mousemove', onMove);
+          window.addEventListener('mouseup', onEnd);
+
+          // Touch events
+          node.addEventListener('touchstart', onStart, { passive: true });
+          window.addEventListener('touchmove', onMove, { passive: false });
+          window.addEventListener('touchend', onEnd);
+        });
+      })();
 
       // ======= TYPING DEMO =======
       const demos = [
